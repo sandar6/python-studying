@@ -20,9 +20,24 @@ def getheadimg():
                         f3.write(str(len(imgdate))+'\n')
 
 
+def getfriendsinfo():
+    sing_list = []
+    itchat.auto_login(hotReload=True)
+    friends = itchat.get_friends(update=True)[0:]
+    for i in friends:
+        # print(i)
+        if i['Sex'] == 1:
+            signature = i['Signature']
+            print(i['RemarkName']+'--->'+signature)
+    #     if signature and ('span' not in signature):
+    #         sing_list.append(signature)
+    # text = "".join(sing_list)
+    # print(text)
+
 
 
 
 
 if __name__ == '__main__':
-    getheadimg()
+    # getheadimg()
+    getfriendsinfo()
