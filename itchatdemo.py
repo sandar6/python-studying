@@ -26,7 +26,7 @@ def getfriendsinfo():
     friends = itchat.get_friends(update=True)[0:]
     for i in friends:
         # print(i)
-        if i['Sex'] == 1:
+        if i['Sex'] == 2:
             signature = i['Signature']
             print(i['RemarkName']+'--->'+signature)
     #     if signature and ('span' not in signature):
@@ -34,10 +34,19 @@ def getfriendsinfo():
     # text = "".join(sing_list)
     # print(text)
 
+def chatroomdemo():
+    itchat.auto_login(hotReload=True)
+    chatrooms = itchat.get_chatrooms(update=True)[0:]
+    for i in chatrooms:
+        if i['NickName'] == '改名了叫侃大山':
+            username = i['UserName']
+            print(username)
+            itchat.send_msg('下午好,{}'.format(time.strftime('%Y-%m-%d %X')),username)
 
 
 
 
 if __name__ == '__main__':
     # getheadimg()
-    getfriendsinfo()
+    # getfriendsinfo()
+    chatroomdemo()
